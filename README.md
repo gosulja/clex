@@ -19,7 +19,7 @@ A header-only, universal tokenization library for C.
 # usage
 Place `clex.h` somewhere in your project, make sure it's included.
 
-```
+```c
 #define CLEX_IMPLEMENTATION
 #include "clex.h"
 
