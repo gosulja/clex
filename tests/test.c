@@ -4,24 +4,18 @@
 #include <assert.h>
 #include <stdio.h>
 
-int main() {
-    assert(test(5, 5) == 10);
-    printf("Successfully passed test.\n");
+int main(void) {
+    printf("Running CLex tests...\n\n");
 
-    const char* test_src = "1+2";
+    CLex clex;
+    init_clex(&clex, "{}()[]<>...->$@*^");
 
-    Lexer lexer;
-    init_lexer(&lexer, test_src);
-
-    printf("Created lexer with test source: %s\n", test_src);
-
-    Token tok = next(&lexer);
+    CLexToken tok = cl_next(&clex);
     while (tok.type != T_EOF) {
-        printf("Type: %d, Value: %s\n", tok.type, tok.value);
-        tok = next(&lexer);
+        printf("token { type: %d, value: %s }\n", tok.type, tok.value);
+        tok = cl_next(&clex);
     }
 
-    destroy_lexer(&lexer);
-
+    printf("\nTests completed.\n");
     return 0;
 }
